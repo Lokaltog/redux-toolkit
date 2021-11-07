@@ -8,6 +8,11 @@ function cli(args: string[], cwd: string): Promise<{ error: ExecException | null
   const cmd = `${require.resolve('ts-node/dist/bin')} -T -P ${path.resolve('./tsconfig.json')} ${path.resolve(
     './src/bin/cli.ts'
   )} ${args.join(' ')}`;
+  console.log('cwd', process.cwd())
+  console.log('dir', __dirname)
+  console.log('res', path.resolve())
+  console.dir(process.env)
+  console.log(cmd)
   return new Promise((resolve) => {
     exec(cmd, { cwd }, (error, stdout, stderr) => {
       resolve({
